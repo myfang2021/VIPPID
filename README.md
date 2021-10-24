@@ -31,6 +31,7 @@ Usage:
 
 ### Train the model
 The training takes two steps:
+
 **Step 1**: train gene-specific model for each gene with enough mutations, then train non-gene-specific model. 
 To train gene-specific model, run
 ```Rscript trainModel.R <gene symbol> <output directory>```
@@ -40,7 +41,8 @@ To train non-gene-specific model, run both:
 
 ```Rscript trainModel.R all_genes <output directory>```
 
-### Example
+**Example**
+
 ```Rscript trainModel.R FAS ./test/```
 
 or
@@ -50,12 +52,14 @@ for i in FAS PRF1 Other all_genes;do
   /usr/bin/Rscript trainModel.R $i ./test/;
 done
 ```
-**Please note that you have to change the input files in trainModel.R before running the script.**
+**Please note that you have to change the input files in trainModel.R and combineModelResults.R before running the scripts.**
+
 **Step 2**: make prediction, collect prediction results and draw ROC graph.
 run:
 
 ```Rscript combineModelResults.R <output directory>```
-### Example
+
+**Example**
 
 ```Rscript combineModelResults.R ./test/```
 
