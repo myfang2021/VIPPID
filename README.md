@@ -27,20 +27,24 @@ You have to generate one SNVBox data file for the PID mutations, and another fil
 The second type of input files are for the prediction information from Varcards.
 Use VarcardsPreprocess/preprocessVarcardAnno4R.sh to preprocess the data from Varcards.
 Usage:
-sh preprocessVarcardAnno4R.sh Varcard_input.txt <mutation class>
+```sh preprocessVarcardAnno4R.sh Varcard_input.txt <mutation class>```
 
 ### Train the model
 The training takes two steps:
 **Step 1**: train gene-specific model for each gene with enough mutations, then train non-gene-specific model. 
 To train gene-specific model, run
-Rscript trainModel.R <gene symbol> <output directory>
+```Rscript trainModel.R <gene symbol> <output directory>```
 To train non-gene-specific model, run both:
-Rscript trainModel.R Other <output directory>
-Rscript trainModel.R all_genes <output directory>
+
+```Rscript trainModel.R Other <output directory>```
+
+```Rscript trainModel.R all_genes <output directory>```
 
 ### Example
-Rscript trainModel.R FAS ./test/
+```Rscript trainModel.R FAS ./test/```
+
 or
+
 ```
 for i in FAS PRF1 Other all_genes;do 
   /usr/bin/Rscript trainModel.R $i ./test/;
@@ -49,9 +53,11 @@ done
 **Please note that you have to change the input files in trainModel.R before running the script.**
 **Step 2**: make prediction, collect prediction results and draw ROC graph.
 run:
-Rscript combineModelResults.R <output directory>
+
+```Rscript combineModelResults.R <output directory>```
 ### Example
-Rscript combineModelResults.R ./test/
+
+```Rscript combineModelResults.R ./test/```
 
 Then the output will be within folders BorutaOut and ModelObjs in the specified output directory.
 
